@@ -1,10 +1,60 @@
 package ZLOMOK;
 
 
+
+
 public class Zlomok {
     private int m;
     private int n;
 
+    static class Exception_n extends Exception
+    {
+        private final String info;
+        Exception_n (String ret)
+        {
+            info = ret;
+        }
+        String getInfo()
+        {
+            return info;
+        }
+        public String toString()
+        {
+            return "Zle zadaný citatel";
+        }
+    }
+    static class Exception_m extends Exception
+    {
+        private final String info;
+        Exception_m(String ret)
+        {
+            info = ret;
+        }
+        String getInfo()
+        {
+            return info;
+        }
+        public String toString()
+        {
+            return "Zle zadany menovatel";
+        }
+    }
+    static class Exception_lomeno extends Exception
+    {
+        private final String info;
+        Exception_lomeno (String ret)
+        {
+            info = ret;
+        }
+        String getInfo()
+        {
+            return info;
+        }
+        public String toString()
+        {
+            return "Zle zadana zlomkova ciara";
+        }
+    }
     /*
 
 Trieda ZLOMOK{}
@@ -16,7 +66,7 @@ Prevod na cele čislo
  */
 
 
-    public boolean dajZlomok(String zlomok) {
+    public void dajZlomok(String zlomok) {
         //substring()- berie od určitého bodu do určítého bodu
         //strchr//hlada znak v retazci
         //strstr//hlada retazec v retazci
@@ -58,7 +108,7 @@ Prevod na cele čislo
                         case "9":
                             c = 9;
                         default:
-                            c = 0;throw new Exception_n;//urob tiedy
+                            c = 0;throw new Exception_n("Zle zadaný citatel");//urob tiedy
                     }
                     n = c * decal;
                 }
@@ -86,7 +136,7 @@ Prevod na cele čislo
                         case "9":
                             c = 9;
                         default:
-                            c = 0;throw new Exception_m;//urob tiedy ;
+                            c = 0;throw new Exception_m("Zle zadany menovatel");//urob tiedy ;
                     }
                     m = c * decal;
                 }
@@ -116,28 +166,29 @@ Prevod na cele čislo
                         case "9":
                             c = 9;
                         default:
-                            c = 0;throw new Exception_n;//urob tiedy ;
+                            c = 0;throw new Exception_n("Zle zadana zlomkova ciara");//urob tiedy ;
                     }
                     n = c * decal;
                     m = 1;
                 }
             } else {
-                throw new Exception_lomeno;//urob tiedy
+                throw new Exception_lomeno("");//urob tiedy
             }
         }
         catch (Exception_n ex)
         {
-            System.out.println("");
+            System.out.println(ex);
         }
         catch (Exception_m ex)
         {
-            System.out.println("");
+            System.out.println(ex);
         }
         catch (Exception_lomeno ex)
         {
-            System.out.println("");
+            System.out.println(ex);
         }
     }
+
 
 
 }
