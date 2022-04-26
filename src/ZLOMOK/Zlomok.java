@@ -2,7 +2,6 @@ package ZLOMOK;
 
 
 
-
 public class Zlomok {
     private int m;
     private int n;
@@ -89,6 +88,8 @@ Prevod na cele čislo
                     int c;
                     decal *= 10;
                     switch (zlomok[i]) {
+                        case "0":
+                            c=0;
                         case "1":
                             c = 1;
                         case "2":
@@ -112,11 +113,14 @@ Prevod na cele čislo
                     }
                     n = c * decal;
                 }
+
                 decal = 1;
                 for (i = d - 1; i >= z; i--) {
                     int c;
                     decal *= 10;
                     switch (zlomok[i]) {
+                        case "0":
+                            c=0;
                         case "1":
                             c = 1;
                         case "2":
@@ -140,6 +144,14 @@ Prevod na cele čislo
                     }
                     m = c * decal;
                 }
+                if(n==0)
+                {
+                    m=1;
+                }
+                if(m==0)
+                {
+                    throw new Exception_m("Zle zadany menovatel");
+                }
                 //...
             } else if (z == 0) {
                 int decal = 1;
@@ -147,6 +159,8 @@ Prevod na cele čislo
                     int c;
                     decal *= 10;
                     switch (zlomok[i]) {
+                        case "0":
+                            c=0;
                         case "1":
                             c = 1;
                         case "2":
