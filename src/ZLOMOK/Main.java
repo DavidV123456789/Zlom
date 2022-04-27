@@ -121,7 +121,7 @@ public class Main {
         BufferedWriter writer = null;
         try{
             writer= new BufferedWriter(new FileWriter("data.out"));
-            /*
+             /*
             String ja="David";
             writer.write(ja);
             //priamy zpis retazca do suboru
