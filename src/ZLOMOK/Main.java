@@ -1,10 +1,8 @@
 package ZLOMOK;
 
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Random;
 import java.util.Scanner;
 
 //názov súboru a názov hlavnej triedy musia byť rovnaké(Main.java , public class Main)
@@ -99,25 +97,108 @@ public class Main {
         //má to však aj vedľajší dôsledok: jeho použitier je pomalé a preto sa nhodí tam, kde potrebujem načítať veľke
         //množstvo nástrojov a kde záleží na rýchlosti načítavania. V nasledujucom priklade sa nacitavaju cele riadky ako retazzce
         //ak chceme v intoch potom sc.nextInt()
-        Scanner sc= null;
-        try
-        {
-            sc= new Scanner(new FileReader("data.in"));
+
+        //da sa aj podla predoslej predlohy ale toto je novy zapis v jave
+        try (Scanner sc = new Scanner(new FileReader("data.in"))) {
             String veta;
-            while(sc.hasNextLine()){//testuje, ci je k dispozicii vstp moze to byt napr. aj hasNextInt() a pod. V takomto pripade nemusime osetrovat vynimku nevhodneho vstupu
-                veta= sc.nextLine();
+            while (sc.hasNextLine()) {//testuje, ci je k dispozicii vstp moze to byt napr. aj hasNextInt() a pod. V takomto pripade nemusime osetrovat vynimku nevhodneho vstupu
+                veta = sc.nextLine();
                 System.out.println(veta);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Subor sa nedalo otvorit");
+        }
+
+
+
+
+        //Metody na nahadzovanie dát do súborov
+
+        //najrychlejsia
+        //inicializacia generatora cisel
+        Random rand = new Random();
+        //Buffrovyný zápis je ttreba použiť, ak je množstvo dát veľke, resp. podstatná je rýchlosť zápisu
+        BufferedWriter writer = null;
+        try{
+            writer= new BufferedWriter(new FileWriter("data.out"));
+            /*
+            String ja="David";
+            writer.write(ja);
+            //priamy zpis retazca do suboru
+             */
+            for(int i=0; i<1000;i++)
+            {
+                //writer zapisuje do subory retazce, preto musime generovane cislo previest na retazec
+                //iny sposob prevodu na retazec je pomocou toString alebo ValueOf. Inak sa zapisu do suboru hacky-baky
+                writer.write((rand.nextInt(100))+" ");//alternativny sposob prevodu na string
             }
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Subor sa nedalo otvorit");
+            System.out.println("Nepodarilo sa vytvorit subor");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Nepodarilo sa zapisat do suboru");
         }
         finally {
-                if(sc!= null)
+            try{
+                if(writer!=null)
                 {
-                    sc.close();
+                    writer.close();
                 }
+            }
+            catch (IOException e)
+            {
+                System.out.println("Nepodarilo sa zatvorit subor");
+            }
+        }
+
+
+
+        //tento zapis je bez bafra . úretp sa hodi len na male mnozstvo dat
+        FileWriter fileWriter=null;
+        try{
+            fileWriter= new FileWriter("date.out");
+
+            for(int i=0; i<1000;i++)
+            {
+                fileWriter.write((rand.nextInt(100))+" ");
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Nepodarilo sa vytvorit subor");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Nepodarilo sa zapisat do suboru");
+        }
+        finally {
+            try{
+                if(fileWriter!=null)
+                {
+                    fileWriter.close();
+                }
+            }
+            catch (IOException e)
+            {
+                System.out.println("Nepodarilo sa zatvorit subor");
+            }
+        }
+
+
+
+
+        //3.ti sposob
+        //da sa aj podla predoslej predlohy ale toto je novy zapis v jave
+        try (PrintWriter printWrite = new PrintWriter(new FileWriter("data.out"))) {
+
+            for (int i = 0; i < 1000; i++) {
+                printWrite.printf("%d ", rand.nextInt(1000));
+            }
+        } catch (IOException e) {
+            System.out.println("Nepodarilo sa zapisat do suboru");
         }
 
 
