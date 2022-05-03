@@ -57,11 +57,10 @@ public class Zlomok {
     /*
 
 Trieda ZLOMOK{}
-Zlomok("3/4")//výnimky
-index of(/)
+Zlomok("3/4")//výnimky**
 matica trojuholníkova
 zlomky: +;-;*;/;
-Prevod na cele čislo
+Prevod na cele čislo*
  */
 
 
@@ -80,7 +79,7 @@ Prevod na cele čislo
                 z = i;
                 zz++;
             }
-        }
+        }90/87
         try {
             if (z == 1) {
                 int decal = 1;
@@ -203,6 +202,64 @@ Prevod na cele čislo
         }
     }
 
+    public void Prevod(){
+        if(n==m)
+        {
+            System.out.println(n);
+        }
+        else
+        {
+            if(n>m)
+            {
+                System.out.println(n/m+"*"+(n-((n/m)*m))+"/"+m);
+            }
+            else{
+                System.out.println(n+"/"+m);
+            }
+        }
 
+    }
 
+    public Zlomok zlomokP(Zlomok a,Zlomok b)
+    {
+        Zlomok V=null;
+        V.m=a.m*b.m;
+        V.n=(a.n*b.m)+(b.n*a.m);
+
+        return V;
+    }
+    public Zlomok zlomokM(Zlomok a,Zlomok b)
+    {
+        Zlomok V = null;
+        V.m=a.m*b.m;
+        V.n=(a.n*b.m)-(b.n*a.m);
+        return V;
+    }
+    public Zlomok zlomokN(Zlomok a,Zlomok b)
+    {
+        Zlomok V=null;
+        V.n=a.n*b.n;
+        V.m=a.m*b.m;
+        return V;
+    }
+    public Zlomok zlomokF(Zlomok a,Zlomok b)
+    {
+        Zlomok V=null;
+        V.n=a.n*b.m;
+        V.m=a.m*b.n;
+        return V;
+    }
+
+    public void Zjednodus()
+    {
+        int i=0;
+        for(i=m;i>1;i--)
+        {
+            if(n%i==0 && m%i==0)
+            {
+                n=n/i;
+                m=m/i;
+            }
+        }
+    }
 }

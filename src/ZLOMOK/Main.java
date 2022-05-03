@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
+        /*
         //TRI METODY NACITAVNIA DAT
 
         //buffrovaný vtup, výrazne urýchli načítanie dát. Používa sa vtedy, ake je rýchlosť dôležitá resp. je dát veľmi veľa
@@ -121,11 +121,11 @@ public class Main {
         BufferedWriter writer = null;
         try{
             writer= new BufferedWriter(new FileWriter("data.out"));
-             /*
+
             String ja="David";
             writer.write(ja);
             //priamy zpis retazca do suboru
-             */
+
             for(int i=0; i<1000;i++)
             {
                 //writer zapisuje do subory retazce, preto musime generovane cislo previest na retazec
@@ -200,7 +200,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Nepodarilo sa zapisat do suboru");
         }
-
+        */
 
 
     }
