@@ -79,7 +79,7 @@ Prevod na cele čislo*
                 z = i;
                 zz++;
             }
-        }90/87
+        }
         try {
             if (z == 1) {
                 int decal = 1;

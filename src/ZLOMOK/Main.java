@@ -2,6 +2,8 @@ package ZLOMOK;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -203,6 +205,27 @@ public class Main {
         */
 
 
+
+        //Landa funkcie
+
+        List<Integer> cisla = new ArrayList<>();
+        for(int i=0;i<10;i++)
+        {
+            cisla.add(10-i);//pridava cisla do listu
+        }
+        for(Integer i:cisla)
+        {
+            System.out.println(i+" ");
+        }
+
+        cisla.forEach(i-> System.out.println(i+" ") ); //(i)->print(i);(i,j)->print(i+j);(i,j)->{    };
+        cisla.removeIf(x->x%2==0);
+        cisla.forEach(i-> System.out.println(i+" ") );
+        System.out.println(cisla.contains(2));
+        cisla.replaceAll(x->x+2);
+        cisla.forEach(i-> System.out.println(i+" ") );
+        cisla.sort((x,y)->x-y);
+        cisla.forEach(i-> System.out.println(i+" ") );
     }
 }
 
